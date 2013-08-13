@@ -59,11 +59,10 @@ MuseScore {
             }
         }
 
-    Text {
+    Label {
         id: textLabel
-        color: "black"
         wrapMode: Text.WordWrap
-        text: qsTr("Paste your ABC tune here (or click button to load a file\nYou need to be connected to internet for this plugin to work")
+        text: qsTr("Paste your ABC tune here (or click button to load a file)\nYou need to be connected to internet for this plugin to work")
         font.pointSize:12
         anchors.left: window.left
         anchors.top: window.top
@@ -76,7 +75,11 @@ MuseScore {
         id:abcText
         anchors.top: textLabel.bottom
         anchors.left: window.left
+        anchors.right: window.right
+        anchors.bottom: buttonOpenFile.top
         anchors.topMargin: 10
+        anchors.bottomMargin: 10
+        anchors.leftMargin: 10
         anchors.rightMargin: 10
         width:parent.width
         height:400
@@ -87,9 +90,10 @@ MuseScore {
     Button {
         id : buttonOpenFile
         text: qsTr("Open file")
-        anchors.top: abcText.bottom
+        anchors.bottom: window.bottom
         anchors.left: abcText.left
         anchors.topMargin: 10
+        anchors.bottomMargin: 10
         anchors.leftMargin: 10
         onClicked: {
             fileDialog.open();
@@ -99,9 +103,10 @@ MuseScore {
     Button {
         id : buttonConvert
         text: qsTr("Import")
-        anchors.top: abcText.bottom
+        anchors.bottom: window.bottom
         anchors.right: abcText.right
         anchors.topMargin: 10
+        anchors.bottomMargin: 10
         anchors.rightMargin: 10
         onClicked: {
             var content = "content=" + encodeURIComponent(abcText.text)
@@ -126,9 +131,10 @@ MuseScore {
     Button {
         id : buttonCancel
         text: qsTr("Cancel")
-        anchors.top: abcText.bottom
+        anchors.bottom: window.bottom
         anchors.right: buttonConvert.left
         anchors.topMargin: 10
+        anchors.bottomMargin: 10
         onClicked: {
                 Qt.quit();
             }
