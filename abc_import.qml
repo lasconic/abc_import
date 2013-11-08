@@ -117,6 +117,11 @@ MuseScore {
                 if (request.readyState == XMLHttpRequest.DONE) {
                     var response = request.responseText
                     //console.log("responseText : " + response)
+                    var noFile = 2;
+                    while (myFile.exists()) {
+                        myFile.source = myFile.tempPath() + "/my_file" + noFile +".xml"
+                        noFile++;
+                    }
                     myFile.write(response)
                     readScore(myFile.source)
                         Qt.quit()
